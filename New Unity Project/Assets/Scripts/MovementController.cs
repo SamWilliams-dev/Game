@@ -5,6 +5,7 @@ public class MovementController : MonoBehaviour {
 
     public float maxSpeed = 10f;
     public float jumpForce = 100f;
+    public float thrust = 10f;
     bool facingRight = true;
     bool isGrounded = false;
 
@@ -14,8 +15,6 @@ public class MovementController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
      //   anim = GetComponent<Animator>();
-
-
 	}
 	
 	// Update is called once per frame
@@ -31,7 +30,8 @@ public class MovementController : MonoBehaviour {
         {
             if (isGrounded == true)
             {
-                transform.Translate(Vector2.up * jumpForce * Time.deltaTime, Space.World);
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+                // transform.Translate(Vector2.up * jumpForce * Time.deltaTime, Space.World);
                 isGrounded = false;
             }
             
